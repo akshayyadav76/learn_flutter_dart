@@ -13,7 +13,7 @@ class Myapp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.lightBlue),
       home: Scaffold(
           appBar: AppBar(title: Text("easylit")),
-          body: ProductsManger("orange")),
+          body: ProductsManger()),
     );
   }
 }
