@@ -13,14 +13,23 @@ class Products extends StatelessWidget {
         ],
       ),
     );
-
   }
+  Widget _buildproductlist(){
+    Widget ProdcutCard;
+    if(products.length>0){
+      ProdcutCard= ListView.builder(
+        itemBuilder: seeprodcts,
+        itemCount: products.length,
+      );
+    }else{
+      ProdcutCard =Center(child: Text("nothing to show"));
+    }
+    return ProdcutCard;
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return  products.length > 0 ? ListView.builder(
-      itemBuilder: seeprodcts,
-      itemCount: products.length,
-        ): Center(child: Text("nothing to show"),);
+    return  _buildproductlist();
   }
 }
