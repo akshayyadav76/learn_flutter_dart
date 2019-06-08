@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:async';
 class Deatils extends StatelessWidget {
   final String title;
   final String url;
@@ -8,7 +8,13 @@ class Deatils extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: (){
+          print("pack");
+          Navigator.pop(context,false);
+          return Future.value(false);
+        },
+        child: Scaffold(
         appBar: AppBar(title: Text(title)),
         body: Center(child: Column(
 
@@ -20,7 +26,7 @@ class Deatils extends StatelessWidget {
             SizedBox(height: 10.0,),
             RaisedButton(child: Text("delete"),onPressed: (){Navigator.pop(context, true);},)
           ],
-        ))
+        )))
     );
   }
 }
