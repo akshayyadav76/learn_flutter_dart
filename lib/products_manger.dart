@@ -3,7 +3,7 @@ import 'package:learn_flutter_dart/products.dart';
 import 'package:learn_flutter_dart/product_control.dart';
 
 class ProductsManger extends StatefulWidget {
-  final String startproduct;
+  final Map<String,String> startproduct;
   ProductsManger({this.startproduct});
 
   @override
@@ -11,7 +11,7 @@ class ProductsManger extends StatefulWidget {
 }
 
 class _ProductsMangerState extends State<ProductsManger> {
-  List<String> _products = [];
+  List<Map<String ,String>> _products = [];
 
   @override
   void initState() {
@@ -20,11 +20,14 @@ class _ProductsMangerState extends State<ProductsManger> {
     super.initState();
   }
 
-  void _addproduct(String product){
+  void _addproduct(Map<String,String>startproduct){
     setState(() {
-      _products.add(product);
+      _products.add(startproduct);
     });
+  }
 
+  void _deleteprodcut(int index){
+    _products.removeAt(index);
   }
 
   @override
@@ -35,7 +38,7 @@ class _ProductsMangerState extends State<ProductsManger> {
       margin: EdgeInsets.all(10.0),
       child: ProductControl(_addproduct),
     ),
-       Expanded(child:  Products(_products)),
+       Expanded(child:  Products(_products,delete: _deleteprodcut,)),
     ],
 
     );
