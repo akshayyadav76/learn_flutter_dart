@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './home_page.dart';
+
 
 class Login extends StatelessWidget {
   @override
@@ -13,7 +13,7 @@ class Login extends StatelessWidget {
             child: Text("Login"),
             onPressed: () {
 
-             Navigator.pushReplacement(context, MaterialPageRoute(builder:(BuildContext context)=>HomePage()));
+             Navigator.pushReplacementNamed(context, 'admin');
             }),
       ),);
 

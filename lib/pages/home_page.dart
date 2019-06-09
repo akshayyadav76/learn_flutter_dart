@@ -20,9 +20,7 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(fontSize: 17),
                 ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return MangageProducts();
-                  }));
+                  Navigator.pushReplacementNamed(context, "admin");
                 },
               )
             ],
