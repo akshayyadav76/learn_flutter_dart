@@ -4,7 +4,9 @@ import './home_page.dart';
 class MangageProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DefaultTabController(
+        length: 2,
+        child:  Scaffold(
         drawer: Drawer(
           child: Column(
             children: <Widget>[
@@ -29,11 +31,18 @@ class MangageProducts extends StatelessWidget {
         ),
         appBar: AppBar(
           title: Text(
-            "easylit",
+            "Mange products",
             style: TextStyle(color: Colors.white),
           ),
+          bottom: TabBar(tabs: <Widget>[
+            Tab(text: 'Create products',icon: Icon(Icons.create)),
+            Tab(text: 'My products',icon: Icon(Icons.list)),
+
+          ],),
           iconTheme: IconThemeData(color: Colors.white),
         ),
-         body: Center(child: Text("this tha all products"),),);
+         body: TabBarView(children: <Widget>[
+
+         ],)));
   }
 }
