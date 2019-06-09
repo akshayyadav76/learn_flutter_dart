@@ -5,7 +5,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-          appBar: AppBar(title: Text("easylit")),
+       drawer: Drawer(child: Column(
+
+       ),),
+          appBar: AppBar(title: Text("easylit",style: TextStyle(color: Colors.white),
+          ),iconTheme: IconThemeData(color: Colors.white),),
           body: ProductsManger());
 
   }
