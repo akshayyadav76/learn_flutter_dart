@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import './home_page.dart';
 
 class MangageProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
         drawer: Drawer(
           child: Column(
             children: <Widget>[
               AppBar(
                 title: Text("choose"),
                 iconTheme: IconThemeData(color: Colors.white),
-
+                automaticallyImplyLeading: false,
               ),
               ListTile(
                 title: Text(
-                  "manage products",
+                  "All products",
                   style: TextStyle(fontSize: 17),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return HomePage();
+                  }));
+                },
               )
             ],
           ),
@@ -29,6 +34,6 @@ class MangageProducts extends StatelessWidget {
           ),
           iconTheme: IconThemeData(color: Colors.white),
         ),
-        body: ProductsManger());
+         body: Center(child: Text("this tha all products"),),);
   }
 }

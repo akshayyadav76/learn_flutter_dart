@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter_dart/products_manger.dart';
+import './manage_products.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -18,7 +19,11 @@ class HomePage extends StatelessWidget {
                   "manage products",
                   style: TextStyle(fontSize: 17),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return MangageProducts();
+                  }));
+                },
               )
             ],
           ),
