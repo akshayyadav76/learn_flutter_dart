@@ -14,7 +14,7 @@ class Myapp extends StatelessWidget {
         theme: ThemeData(
         brightness: Brightness.light,
           primarySwatch: Colors.lightBlue,
-
+accentColor: Colors.white,
         ),
 
     home: Scaffold( body:
