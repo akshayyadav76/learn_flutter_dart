@@ -8,34 +8,38 @@ main() {
   runApp(Myapp());
 }
 
-class Myapp extends StatelessWidget {
+class Myapp extends StatefulWidget {
+  @override
+  _MyappState createState() => _MyappState();
+}
+
+class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: Colors.lightBlue,
-          accentColor: Colors.white,
-        ),
-       // home:  Login(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.lightBlue,
+        accentColor: Colors.white,
+      ),
+      // home:  Login(),
       routes: {
-          '/': (BuildContext context)=>HomePage(),
-          "admin":(BuildContext context)=>MangageProducts()},
+        '/': (BuildContext context) => HomePage(),
+        "admin": (BuildContext context) => MangageProducts()
+      },
 
-      onGenerateRoute: (RouteSettings setting){
-        final List<String>pathnames= setting.name.split("/");
-        if(pathnames[0] != ''){
+      onGenerateRoute: (RouteSettings setting) {
+        final List<String> pathnames = setting.name.split("/");
+        if (pathnames[0] != '') {
           return null;
         }
-        if(pathnames[1]=="products"){
-         final int index =int.parse(pathnames[2]);
-         return MaterialPageRoute(builder: (context) {
-            return Deatils(
-                products[index]['title'], products[index]['image']);
+        if (pathnames[1] == "products") {
+          final int index = int.parse(pathnames[2]);
+          return MaterialPageRoute(builder: (context) {
+            return Deatils(products[index]['title'], products[index]['image']);
           });
         }
         return null;
-
       },
     );
   }
