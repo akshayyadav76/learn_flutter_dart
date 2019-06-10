@@ -24,10 +24,7 @@ class MangageProducts extends StatelessWidget {
                       style: TextStyle(fontSize: 17),
                     ),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return HomePage();
-                      }));
+                      Navigator.pushReplacementNamed(context, "/");
                     },
                   )
                 ],
