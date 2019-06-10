@@ -6,7 +6,7 @@ class ProductsManger extends StatelessWidget {
   final List<Map<String,String>> products;
   final Function addproduct;
   final Function deleteproduct;
-  ProductsManger({this.products,this.addproduct,this.deleteproduct});
+  ProductsManger(this.products,this.addproduct,this.deleteproduct);
 
 
   @override
