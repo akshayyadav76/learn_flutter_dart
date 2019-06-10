@@ -30,7 +30,6 @@ class _MyappState extends State<Myapp> {
     _products.removeAt(index);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,7 +40,7 @@ class _MyappState extends State<Myapp> {
       ),
       // home:  Login(),
       routes: {
-        '/': (BuildContext context) => HomePage(),
+        '/': (BuildContext context) => HomePage(_products,_addproduct,_deleteprodcut),
         "admin": (BuildContext context) => MangageProducts()
       },
 
@@ -52,7 +51,7 @@ class _MyappState extends State<Myapp> {
         }
         if (pathnames[1] == "products") {
           final int index = int.parse(pathnames[2]);
-          return MaterialPageRoute(builder: (context) {
+          return MaterialPageRoute<bool>(builder: (context) {
             return Deatils(_products[index]['title'], _products[index]['image']);
           });
         }
