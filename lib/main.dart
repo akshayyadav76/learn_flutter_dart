@@ -3,6 +3,8 @@ import './pages/login.dart';
 
 import "./pages/home_page.dart";
 import './pages/manage_products.dart';
+import './products.dart';
+import './pages/deatils.dart';
 
 main() {
   runApp(Myapp());
@@ -16,16 +18,16 @@ class Myapp extends StatefulWidget {
 
 
 class _MyappState extends State<Myapp> {
+  List<Map<String ,String>> _products = [];
 
-
-  void _addproduct(Map<String,String>startproduct){
+  void _addproduct(Map<String,String>products){
     setState(() {
-      products.add(startproduct);
+      _products.add(products);
     });
   }
 
   void _deleteprodcut(int index){
-    products.removeAt(index);
+    _products.removeAt(index);
   }
 
 
@@ -51,7 +53,7 @@ class _MyappState extends State<Myapp> {
         if (pathnames[1] == "products") {
           final int index = int.parse(pathnames[2]);
           return MaterialPageRoute(builder: (context) {
-            return Deatils(products[index]['title'], products[index]['image']);
+            return Deatils(_products[index]['title'], _products[index]['image']);
           });
         }
         return null;
