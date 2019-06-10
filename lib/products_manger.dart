@@ -11,7 +11,7 @@ class ProductsManger extends StatefulWidget {
 }
 
 class _ProductsMangerState extends State<ProductsManger> {
-  List<Map<String ,String>> _products = [];
+
 
   @override
   void initState() {
@@ -20,15 +20,6 @@ class _ProductsMangerState extends State<ProductsManger> {
     super.initState();
   }
 
-  void _addproduct(Map<String,String>startproduct){
-    setState(() {
-      _products.add(startproduct);
-    });
-  }
-
-  void _deleteprodcut(int index){
-    _products.removeAt(index);
-  }
 
   @override
   Widget build(BuildContext context) {

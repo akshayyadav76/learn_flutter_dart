@@ -13,7 +13,22 @@ class Myapp extends StatefulWidget {
   _MyappState createState() => _MyappState();
 }
 
+
+
 class _MyappState extends State<Myapp> {
+  List<Map<String ,String>> products = [];
+
+  void _addproduct(Map<String,String>startproduct){
+    setState(() {
+      _products.add(startproduct);
+    });
+  }
+
+  void _deleteprodcut(int index){
+    _products.removeAt(index);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
