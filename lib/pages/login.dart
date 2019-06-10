@@ -13,7 +13,7 @@ class Login extends StatelessWidget {
             child: Text("Login"),
             onPressed: () {
 
-             Navigator.pushReplacementNamed(context, 'admin');
+             Navigator.pushReplacementNamed(context, '/');
             }),
       ),);
 
