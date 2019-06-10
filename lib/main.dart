@@ -16,16 +16,16 @@ class Myapp extends StatefulWidget {
 
 
 class _MyappState extends State<Myapp> {
-  List<Map<String ,String>> products = [];
+
 
   void _addproduct(Map<String,String>startproduct){
     setState(() {
-      _products.add(startproduct);
+      products.add(startproduct);
     });
   }
 
   void _deleteprodcut(int index){
-    _products.removeAt(index);
+    products.removeAt(index);
   }
 
 
