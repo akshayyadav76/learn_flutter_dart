@@ -24,7 +24,8 @@ class Deatils extends StatelessWidget {
             SizedBox(height: 10.0,),
             Text(title),
             SizedBox(height: 10.0,),
-            RaisedButton(child: Text("delete"),onPressed: (){Navigator.pop(context, true);},)
+            RaisedButton(child: Text("delete"),onPressed: (){Navigator.pop(context, true);
+            },)
           ],
         )))
     );

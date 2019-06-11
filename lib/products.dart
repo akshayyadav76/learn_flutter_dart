@@ -6,7 +6,7 @@ class Products extends StatelessWidget {
   final List<Map<String, String>> products;
   final Function delete;
 
-  Products(this.products,this.delete);
+  Products(this.products,{this.delete});
 
   Widget seeprodcts(BuildContext context, int index) {
     return Card(
@@ -25,9 +25,14 @@ class Products extends StatelessWidget {
                     if(value){
                       delete(index);
                     }
+                    if(index == 0){Navigator.pushReplacementNamed(context, "admins");}
 
                     });
-                  })
+
+                  }
+
+
+                  )
             ],
           )
         ],
@@ -35,7 +40,7 @@ class Products extends StatelessWidget {
     );
   }
 
-  Widget _buildproductlist() {
+  Widget buildproductlist() {
     Widget ProdcutCard;
     if (products.length > 0) {
       ProdcutCard = ListView.builder(
@@ -50,6 +55,6 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildproductlist();
+    return buildproductlist();
   }
 }
