@@ -1,12 +1,52 @@
 import 'package:flutter/material.dart';
 
-class CreateProductsPage extends StatelessWidget {
+class CreateProductsPage extends StatefulWidget {
+  @override
+  _CreateProductsPageState createState() => _CreateProductsPageState();
+}
+
+class _CreateProductsPageState extends State<CreateProductsPage> {
+  String data;
+  String dec;
+  double price;
+
   @override
   Widget build(BuildContext context) {
-    return Center(child: RaisedButton(child: Text("save"),onPressed: (){
-      showModalBottomSheet(context: context,builder: (BuildContext context){
-        return Center(child: Text("see the produts here"),);
-      });
-    },));
+    return Container(
+        padding: EdgeInsets.all(14.0),
+        child: Column(
+      children: <Widget>[
+        TextField(
+          autofocus: true,
+          decoration: InputDecoration(labelText: "Product name"),
+          onChanged: (String value) {
+            setState(() {
+              data = value;
+            });
+          },
+        ),
+        TextField(
+          autofocus: true,
+          decoration: InputDecoration(labelText: "Product dec"),
+          maxLines: 4,
+          onChanged: (String value) {
+            setState(() {
+              dec = value;
+            });
+          },
+        ),
+        TextField(
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(labelText: "Product price"),
+          autofocus: true,
+          onChanged: (String value) {
+            setState(() {
+              price = double.parse(value);
+            });
+          },
+        ),
+        //Text(data),
+      ],
+    ));
   }
 }
