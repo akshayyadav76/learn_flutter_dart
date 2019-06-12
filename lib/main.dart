@@ -18,9 +18,9 @@ class Myapp extends StatefulWidget {
 
 
 class _MyappState extends State<Myapp> {
-  List<Map<String, String>> _products = [];
+  List<Map<String, dynamic>> _products = [];
 
-  void _addproduct(Map<String, String>products) {
+  void _addproduct(Map<String, dynamic>products) {
     setState(() {
       _products.add(products);
     });

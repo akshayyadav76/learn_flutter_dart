@@ -4,7 +4,7 @@ import './manage_products.dart';
 
 class HomePage extends StatelessWidget {
 
-  final List<Map<String,String>> products;
+  final List<Map<String,dynamic>> products;
 
   HomePage(this.products,);
   @override

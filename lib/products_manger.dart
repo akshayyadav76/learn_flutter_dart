@@ -3,7 +3,7 @@ import 'package:learn_flutter_dart/products.dart';
 
 
 class ProductsManger extends StatelessWidget {
-  final List<Map<String,String>> products;
+  final List<Map<String,dynamic>> products;
 
 
   ProductsManger(this.products);
