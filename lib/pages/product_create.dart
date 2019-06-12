@@ -14,7 +14,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.all(14.0),
-        child: Column(
+        child: ListView(
       children: <Widget>[
         TextField(
           autofocus: true,
@@ -45,6 +45,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
             });
           },
         ),
+        RaisedButton(onPressed: (){},child: Text("save"),)
         //Text(data),
       ],
     ));
