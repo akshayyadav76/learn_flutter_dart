@@ -5,9 +5,8 @@ import './manage_products.dart';
 class HomePage extends StatelessWidget {
 
   final List<Map<String,String>> products;
-  final Function addproduct;
-  final Function deleteproduct;
-  HomePage(this.products,this.addproduct,this.deleteproduct);
+
+  HomePage(this.products,);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +37,6 @@ class HomePage extends StatelessWidget {
           ),
           iconTheme: IconThemeData(color: Colors.white),
         ),
-        body: ProductsManger(products,addproduct,deleteproduct));
+        body: ProductsManger(products));
   }
 }
