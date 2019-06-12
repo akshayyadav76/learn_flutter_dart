@@ -41,8 +41,8 @@ class _MyappState extends State<Myapp> {
         // home:  Login(),
         routes: {
           '/': (BuildContext context) =>
-              HomePage(_products, _addproduct, _deleteprodcut),
-          "admin": (BuildContext context) => MangageProducts()
+              HomePage(_products, ),
+          "admin": (BuildContext context) => MangageProducts(_addproduct, _deleteprodcut)
         },
 
         onGenerateRoute: (RouteSettings setting) {
