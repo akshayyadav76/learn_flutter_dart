@@ -41,7 +41,7 @@ class _MyappState extends State<Myapp> {
         // home:  Login(),
         routes: {
           '/': (BuildContext context) =>
-              HomePage(_products, ),
+              HomePage(_products),
           "admin": (BuildContext context) => MangageProducts(_addproduct, _deleteprodcut)
         },
 
@@ -62,7 +62,7 @@ class _MyappState extends State<Myapp> {
 
         onUnknownRoute: (RouteSettings setting) {
           return MaterialPageRoute(builder: (BuildContext context) =>
-              HomePage(_products, _addproduct, _deleteprodcut));
+              HomePage(_products));
         });
   }
 }
