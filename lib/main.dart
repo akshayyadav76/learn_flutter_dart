@@ -37,7 +37,7 @@ class _MyappState extends State<Myapp> {
     return MaterialApp(
         theme: ThemeData(
           brightness: Brightness.light,
-          primarySwatch: Colors.lightBlue,
+          primarySwatch: Colors.brown,
           accentColor: Colors.deepPurple,
         ),
          home:  Login(),

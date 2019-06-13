@@ -13,50 +13,65 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
-      ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 20,
-          ),
-          TextField(
-            autofocus: true,
-            decoration: InputDecoration(labelText: "E-mail"),
-            onChanged: (String value) {
-              setState(() {
-                _id =value;
-              });
-            },
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          TextField(
-            autofocus: true,
-            decoration: InputDecoration(labelText: "password"),
-            onChanged: (String value) {
-              setState(() {
-                _pass = value;
-              });
-            },
-          ),
-          SwitchListTile(
-              value: _accept,
-              onChanged: (bool value) {
-                setState(() {
-                  _accept = value;
-                });
-              },
-              title: Text("accept terms & conditions")),
-          RaisedButton(
-              child: Text("Login"),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, 'second');
-              }),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: Text("Login"),
+        ),
+        body: DecoratedBox(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/bg.jpg'),
+                  fit: BoxFit.fill,
+                  colorFilter: ColorFilter.mode(
+                      Colors.brown.withOpacity(0.7),BlendMode.dstATop))),
+          child: Center(child: SingleChildScrollView(child:  Column(
+            children: <Widget>[
+              SizedBox(
+                height: 20,
+              ),
+
+              Container(
+                decoration: BoxDecoration(color: Colors.white),
+                child: TextField(
+
+                  autofocus: true,
+                  decoration: InputDecoration(labelText: "E-mail"),
+                  onChanged: (String value) {
+                    setState(() {
+                      _id = value;
+                    });
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                decoration: BoxDecoration(color: Colors.white),
+                child: TextField(
+                  autofocus: true,
+                  decoration: InputDecoration(labelText: "password"),
+                  onChanged: (String value) {
+                    setState(() {
+                      _pass = value;
+                    });
+                  },
+                ),
+              ),
+              SwitchListTile(
+                  value: _accept,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _accept = value;
+                    });
+                  },
+                  title: Text("accept terms & conditions",style: TextStyle(fontWeight: FontWeight.w700),)),
+              RaisedButton(
+                  child: Text("Login"),
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, 'second');
+                  }),
+            ],
+          ),),
+        )));
   }
 }
