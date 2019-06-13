@@ -29,7 +29,7 @@ class MangageProducts extends StatelessWidget {
                       style: TextStyle(fontSize: 17),
                     ),
                     onTap: () {
-                      Navigator.pushReplacementNamed(context, "/");
+                      Navigator.pushReplacementNamed(context, "second");
                     },
                   )
                 ],

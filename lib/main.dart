@@ -36,17 +36,17 @@ class _MyappState extends State<Myapp> {
         theme: ThemeData(
           brightness: Brightness.light,
           primarySwatch: Colors.lightBlue,
-          accentColor: Colors.white,
+          accentColor: Colors.deepPurple,
         ),
-        // home:  Login(),
+         home:  Login(),
         routes: {
-          '/': (BuildContext context) =>
+          'second': (BuildContext context) =>
               HomePage(_products),
           "admin": (BuildContext context) => MangageProducts(_addproduct, _deleteprodcut)
         },
 
         onGenerateRoute: (RouteSettings setting) {
-          final List<String> pathnames = setting.name.split("/");
+          final List<String> pathnames = setting.name.split("second");
           if (pathnames[0] != '') {
             return null;
           }

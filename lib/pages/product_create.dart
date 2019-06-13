@@ -57,7 +57,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
           };
           widget.addproduct(producuts);
           print("workng");
-          Navigator.pushReplacementNamed(context, '/');
+          Navigator.pushReplacementNamed(context, 'second');
         },child: Text("save"),)
         //Text(data),
       ],
