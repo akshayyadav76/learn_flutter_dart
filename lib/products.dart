@@ -13,7 +13,23 @@ class Products extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image.asset(products[index]['image']),
-          Text(products[index]['title'],style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: <Widget>[
+           // SizedBox(width: 80,),
+            Text(products[index]['title'],style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
+            //SizedBox(width: 40,),
+            Container(
+                        decoration: BoxDecoration(border: Border.all(color: Colors.deepPurple)),
+              child: Text('\$${products[index]['price'].toString()}',
+                style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
+            ),
+          ],),
+          SizedBox(height: 10,),
+          Container(
+            decoration: BoxDecoration(border: Border.all(color: Colors.deepPurple)),
+            child: Text('Lalghati,Airport road,Bhopal',
+              style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
+          ),
+
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: <Widget>[
