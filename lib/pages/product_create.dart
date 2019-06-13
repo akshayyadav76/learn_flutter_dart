@@ -9,9 +9,9 @@ class CreateProductsPage extends StatefulWidget {
 }
 
 class _CreateProductsPageState extends State<CreateProductsPage> {
-  String data;
-  String dec;
-  double price;
+  String _data;
+  String _dec;
+  double _price;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
           decoration: InputDecoration(labelText: "Product name"),
           onChanged: (String value) {
             setState(() {
-              data = value;
+              _data = value;
             });
           },
         ),
@@ -34,7 +34,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
           maxLines: 4,
           onChanged: (String value) {
             setState(() {
-              dec = value;
+              _dec = value;
             });
           },
         ),
@@ -44,17 +44,20 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
           autofocus: true,
           onChanged: (String value) {
             setState(() {
-              price = double.parse(value);
+              _price = double.parse(value);
             });
           },
         ),
         RaisedButton(onPressed: (){
           final Map<String,dynamic> producuts ={
-            'data': data,
-            'dec': dec,
-            'price': price,
+            'title': _data,
+            'dec': _dec,
+            'price': _price,
+            'image': 'images/tic.jpg',
           };
           widget.addproduct(producuts);
+          print("workng");
+          Navigator.pushReplacementNamed(context, '/');
         },child: Text("save"),)
         //Text(data),
       ],
