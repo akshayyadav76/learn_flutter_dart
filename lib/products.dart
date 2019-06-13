@@ -13,7 +13,7 @@ class Products extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image.asset(products[index]['image']),
-          Text(products[index]['title']),
+          Text(products[index]['title'],style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: <Widget>[
