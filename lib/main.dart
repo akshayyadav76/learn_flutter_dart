@@ -35,6 +35,7 @@ class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.light,
           primarySwatch: Colors.brown,

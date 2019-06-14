@@ -32,12 +32,15 @@ class HomePage extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
+          actions: <Widget>[IconButton(icon: Icon(Icons.favorite), onPressed: (){})],
           title: Text(
+
             "easylit",
             style: TextStyle(color: Colors.white),
           ),
           iconTheme: IconThemeData(color: Colors.white),
         ),
+
         body: ProductsManger(products));
   }
 }
