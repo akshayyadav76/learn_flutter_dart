@@ -3,7 +3,7 @@ import './pages/login.dart';
 
 import "./pages/home_page.dart";
 import './pages/manage_products.dart';
-import './products.dart';
+import 'package:learn_flutter_dart/widgets/products.dart';
 import './pages/deatils.dart';
 
 

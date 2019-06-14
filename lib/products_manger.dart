@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter_dart/products.dart';
+import 'package:learn_flutter_dart/widgets/products.dart';
 
 
 class ProductsManger extends StatelessWidget {
