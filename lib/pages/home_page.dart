@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
                 automaticallyImplyLeading: false,
               ),
               ListTile(
+                leading: Icon(Icons.create),
                 title: Text(
                   "manage products",
                   style: TextStyle(fontSize: 17),

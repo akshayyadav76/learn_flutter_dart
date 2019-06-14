@@ -23,8 +23,9 @@ class MangageProducts extends StatelessWidget {
                     iconTheme: IconThemeData(color: Colors.white),
                     automaticallyImplyLeading: false,
                   ),
-                  ListTile(
+                  ListTile( leading: Icon(Icons.local_mall),
                     title: Text(
+
                       "All products",
                       style: TextStyle(fontSize: 17),
                     ),
@@ -36,6 +37,7 @@ class MangageProducts extends StatelessWidget {
               ),
             ),
             appBar: AppBar(
+
               title: Text(
                 "Mange products",
                 style: TextStyle(color: Colors.white),
