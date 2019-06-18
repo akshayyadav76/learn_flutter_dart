@@ -38,6 +38,7 @@ class _MyappState extends State<Myapp> {
           brightness: Brightness.light,
           primarySwatch: Colors.brown,
           accentColor: Colors.deepPurple,
+          buttonColor: Colors.red,
         ),
          home:  Login(),
         routes: {

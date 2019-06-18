@@ -63,8 +63,11 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final dv=MediaQuery.of(context).size.width;
+    final devicesize=  dv>500.0 ? 400.0: dv*0.95 ;
+    final dvpadding=dv-devicesize;
     return Container(
-        padding: EdgeInsets.all(14.0),
+        padding: EdgeInsets.symmetric(horizontal: dvpadding/2),
         child: ListView(
       children: <Widget>[
         _buildtitle(),
@@ -74,6 +77,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 
         RaisedButton(onPressed: (){
           _onclick();
+
         },child: Text("save"),)
         //Text(data),
       ],
