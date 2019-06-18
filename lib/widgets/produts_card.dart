@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'price_tag.dart';
+import './ui_elements/title_default.dart';
 
 class ProductsCard extends StatelessWidget {
   final Map<String ,dynamic>product;
@@ -16,7 +17,7 @@ class ProductsCard extends StatelessWidget {
           Image.asset(product['image']),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: <Widget>[
             // SizedBox(width: 80,),
-            Text(product['title'],style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
+          TitleDefulat(product["title"]),
             //SizedBox(width: 40,),
 
             Price_tag(product['price'].toString()),
@@ -25,7 +26,7 @@ class ProductsCard extends StatelessWidget {
           SizedBox(height: 10,),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.deepPurple)),
-            child: Text('Lalghati,Airport road,Bhopal',
+            child: Text(product['dec'],
               style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
           ),
 

@@ -4,8 +4,10 @@ import 'dart:async';
 class Deatils extends StatelessWidget {
   final String title;
   final String url;
+  final String dec;
+  final double price;
 
-  Deatils(this.title, this.url);
+  Deatils(this.title, this.url,this.dec,this.price);
 
   _Showdilog(BuildContext context) {
     showDialog(
@@ -49,10 +51,18 @@ class Deatils extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text(title),
-                SizedBox(
-                  height: 10.0,
-                ),
+
+                Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: <Widget>[
+                  // SizedBox(width: 80,),
+                  Text(title),
+                  //SizedBox(width: 40,),
+                  Text(price.toString())
+                ],),
+                Text(dec),
+
+                //SizedBox(height: 10.0,),
+
+
                 RaisedButton(
                   child: Text("delete"),
                   onPressed: () {

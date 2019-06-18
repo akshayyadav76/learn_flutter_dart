@@ -17,8 +17,6 @@ class Myapp extends StatefulWidget {
   _MyappState createState() => _MyappState();
 }
 
-
-
 class _MyappState extends State<Myapp> {
   List<Map<String, dynamic>> _products = [];
 
@@ -49,7 +47,7 @@ class _MyappState extends State<Myapp> {
         },
 
         onGenerateRoute: (RouteSettings setting) {
-          final List<String> pathnames = setting.name.split("second");
+          final List<String> pathnames = setting.name.split("/");
           if (pathnames[0] != '') {
             return null;
           }
@@ -57,7 +55,8 @@ class _MyappState extends State<Myapp> {
             final int index = int.parse(pathnames[2]);
             return MaterialPageRoute<bool>(builder: (context) {
               return Deatils(
-                  _products[index]['title'], _products[index]['image']);
+                  _products[index]['title'], _products[index]['image'],
+              _products[index]["dec"],_products[index]["price"]);
             });
           }
           return null;

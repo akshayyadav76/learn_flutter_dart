@@ -3,6 +3,7 @@ import './home_page.dart';
 
 import './product_create.dart';
 import './product_list.dart';
+import '../widgets/ui_elements/title_default.dart';
 
 class MangageProducts extends StatelessWidget {
   final Function addproduct;
@@ -23,9 +24,8 @@ class MangageProducts extends StatelessWidget {
                     iconTheme: IconThemeData(color: Colors.white),
                     automaticallyImplyLeading: false,
                   ),
-                  ListTile( leading: Icon(Icons.local_mall),
+                  ListTile(leading: Icon(Icons.local_mall),
                     title: Text(
-
                       "All products",
                       style: TextStyle(fontSize: 17),
                     ),
@@ -36,8 +36,8 @@ class MangageProducts extends StatelessWidget {
                 ],
               ),
             ),
-            appBar: AppBar(
 
+            appBar: AppBar(
               title: Text(
                 "Mange products",
                 style: TextStyle(color: Colors.white),

@@ -31,6 +31,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+
         appBar: AppBar(
           actions: <Widget>[IconButton(icon: Icon(Icons.favorite), onPressed: (){})],
           title: Text(
