@@ -13,41 +13,53 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   String _dec;
   double _price;
 
+  Widget _buildtitle(){
+    return TextField(
+      autofocus: true,
+      decoration: InputDecoration(labelText: "Product name"),
+      onChanged: (String value) {
+        setState(() {
+          _data = value;
+        });
+      },
+    );
+  }
+  Widget _bilddec(){
+    return TextField(
+      autofocus: true,
+      decoration: InputDecoration(labelText: "Product dec"),
+      maxLines: 4,
+      onChanged: (String value) {
+        setState(() {
+          _dec = value;
+        });
+      },
+    );
+  }
+  Widget _bildprice(){
+    return  TextField(
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(labelText: "Product price"),
+      autofocus: true,
+      onChanged: (String value) {
+        setState(() {
+          _price = double.parse(value);
+        });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.all(14.0),
         child: ListView(
       children: <Widget>[
-        TextField(
-          autofocus: true,
-          decoration: InputDecoration(labelText: "Product name"),
-          onChanged: (String value) {
-            setState(() {
-              _data = value;
-            });
-          },
-        ),
-        TextField(
-          autofocus: true,
-          decoration: InputDecoration(labelText: "Product dec"),
-          maxLines: 4,
-          onChanged: (String value) {
-            setState(() {
-              _dec = value;
-            });
-          },
-        ),
-        TextField(
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(labelText: "Product price"),
-          autofocus: true,
-          onChanged: (String value) {
-            setState(() {
-              _price = double.parse(value);
-            });
-          },
-        ),
+        _buildtitle(),
+        _bilddec(),
+        _bildprice(),
+
+
         RaisedButton(onPressed: (){
           final Map<String,dynamic> producuts ={
             'title': _data,
