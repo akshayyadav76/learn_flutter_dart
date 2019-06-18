@@ -49,6 +49,18 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     );
   }
 
+  void _onclick(){
+    final Map<String,dynamic> producuts ={
+      'title': _data,
+      'dec': _dec,
+      'price': _price,
+      'image': 'images/tic.jpg',
+    };
+    widget.addproduct(producuts);
+    print("workng");
+    Navigator.pushReplacementNamed(context, 'second');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,15 +73,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 
 
         RaisedButton(onPressed: (){
-          final Map<String,dynamic> producuts ={
-            'title': _data,
-            'dec': _dec,
-            'price': _price,
-            'image': 'images/tic.jpg',
-          };
-          widget.addproduct(producuts);
-          print("workng");
-          Navigator.pushReplacementNamed(context, 'second');
+          _onclick();
         },child: Text("save"),)
         //Text(data),
       ],
