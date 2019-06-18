@@ -10,43 +10,51 @@ class _LoginState extends State<Login> {
   String _pass;
   bool _accept = false;
 
+
   @override
   Widget build(BuildContext context) {
+    final dv=MediaQuery.of(context).size.width;
+    final devicesize=  dv>500.0 ? 400.0: dv*0.95 ;
     return Scaffold(
         appBar: AppBar(
           title: Text("Login"),
         ),
         body: DecoratedBox(
-            decoration: BoxDecoration(
-                image: _BuildBackgroudImage()),
-
-            child: Center(
+            decoration: BoxDecoration(image: _BuildBackgroudImage()),
+            child: Container(
+              alignment: Alignment.center,
               child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 20,),
-                   _BildEmail(),
-                    SizedBox(height: 20,),
-                    _BuildPass(),
-                    _BuildSwitch(),
-                    RaisedButton(
-                        child: Text("Login"),
-                        onPressed: _onSubmit ),
-                  ],
+                child: Container(
+                  width:devicesize,
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 20,
+                      ),
+                      _BildEmail(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      _BuildPass(),
+                      _BuildSwitch(),
+                      RaisedButton(child: Text("Login"), onPressed: _onSubmit),
+                    ],
+                  ),
                 ),
               ),
             )));
   }
 
-  DecorationImage _BuildBackgroudImage(){
+  DecorationImage _BuildBackgroudImage() {
     return DecorationImage(
         image: AssetImage('images/bg.jpg'),
         fit: BoxFit.fill,
-        colorFilter: ColorFilter.mode(
-            Colors.brown.withOpacity(0.7), BlendMode.dstATop));
+        colorFilter:
+            ColorFilter.mode(Colors.brown.withOpacity(0.7), BlendMode.dstATop));
   }
-  Widget _BildEmail(){
-    return  Container(
+
+  Widget _BildEmail() {
+    return Container(
       decoration: BoxDecoration(color: Colors.white),
       child: TextField(
         autofocus: true,
@@ -59,7 +67,8 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-  Widget _BuildPass(){
+
+  Widget _BuildPass() {
     return Container(
       decoration: BoxDecoration(color: Colors.white),
       child: TextField(
@@ -73,7 +82,8 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-  Widget _BuildSwitch(){
+
+  Widget _BuildSwitch() {
     return SwitchListTile(
         value: _accept,
         onChanged: (bool value) {
@@ -86,11 +96,8 @@ class _LoginState extends State<Login> {
           style: TextStyle(fontWeight: FontWeight.w700),
         ));
   }
-  void _onSubmit(){
-     Navigator.pushReplacementNamed(context, 'second');
+
+  void _onSubmit() {
+    Navigator.pushReplacementNamed(context, 'second');
   }
-
-
-
-
 }
