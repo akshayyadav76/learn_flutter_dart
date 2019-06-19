@@ -3,8 +3,8 @@ import './product_create.dart';
 
 class ListProductsPage extends StatelessWidget {
   List<Map<String, dynamic>> _products = [];
-
-  ListProductsPage(this._products);
+final Function _update;
+  ListProductsPage(this._products,this._update);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ListProductsPage extends StatelessWidget {
           title: Text(_products[index]['title']),
           trailing: IconButton(icon: Icon(Icons.create), onPressed:(){
             Navigator.of(context).push(MaterialPageRoute(builder: (context){
-              return CreateProductsPage(products:_products[index]);
+              return CreateProductsPage(products:_products[index],update: _update,index: index,);
             }));
           }),
         );

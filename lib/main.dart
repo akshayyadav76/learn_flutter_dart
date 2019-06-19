@@ -26,8 +26,16 @@ class _MyappState extends State<Myapp> {
     });
   }
 
+
   void _deleteprodcut(int index) {
     _products.removeAt(index);
+  }
+
+  void _update(int index, Map<String,dynamic>product){
+    setState(() {
+      _products[index]=product;
+    });
+
   }
 
   @override
@@ -41,10 +49,11 @@ class _MyappState extends State<Myapp> {
           buttonColor: Colors.red,
         ),
          home:  Login(),
+
         routes: {
           'second': (BuildContext context) =>
               HomePage(_products),
-          "admin": (BuildContext context) => MangageProducts(_addproduct, _deleteprodcut,_products)
+          "admin": (BuildContext context) => MangageProducts(_addproduct, _deleteprodcut,_products,_update)
         },
 
         onGenerateRoute: (RouteSettings setting) {

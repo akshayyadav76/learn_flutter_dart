@@ -4,8 +4,9 @@ class CreateProductsPage extends StatefulWidget {
   final Function addproduct;
   final Function update;
   Map<String, dynamic> products;
+  final int index;
 
-  CreateProductsPage({this.addproduct, this.products, this.update});
+  CreateProductsPage({this.addproduct, this.products, this.update,this.index});
 
   @override
   _CreateProductsPageState createState() => _CreateProductsPageState();
@@ -56,7 +57,8 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
               title: Text("edit product"),
             ),
             body: Column(
-              children: <Widget>[_buildtitle(), _bilddec(), _bildprice()],
+              children: <Widget>[_buildtitle(), _bilddec(), _bildprice(),
+              RaisedButton(child: Text("save"),onPressed: _onclick,)],
             ),
           );
   }
@@ -118,7 +120,12 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 
   void _onclick() {
     _formkey.currentState.validate();
-    _formkey.currentState.save();
+    if(widget.products ==null){
+      _formkey.currentState.save();
+    }else{widget.update(widget.index,_formdata);
+
+    }
+
 //    final Map<String, dynamic> producuts = {
 //      'title': _data,
 //      'dec': _dec,
