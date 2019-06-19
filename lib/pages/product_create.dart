@@ -40,40 +40,29 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   }
 
   Widget _buildtitle() {
-    return TextField(
+    return TextFormField(
       autofocus: true,
       decoration: InputDecoration(labelText: "Product name"),
-      onChanged: (String value) {
-        setState(() {
-          _data = value;
-        });
-      },
+      //onChanged: (String value) {setState(() {_data = value;});},
+
     );
   }
 
   Widget _bilddec() {
-    return TextField(
+    return TextFormField(
       autofocus: true,
       decoration: InputDecoration(labelText: "Product dec"),
       maxLines: 4,
-      onChanged: (String value) {
-        setState(() {
-          _dec = value;
-        });
-      },
+    //  onChanged: (String value) {setState(() {_dec = value;});},
     );
   }
 
   Widget _bildprice() {
-    return TextField(
+    return TextFormField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: "Product price"),
       autofocus: true,
-      onChanged: (String value) {
-        setState(() {
-          _price = double.parse(value);
-        });
-      },
+     // onChanged: (String value) {setState(() {_price = double.parse(value);});},
     );
   }
 
