@@ -10,9 +10,13 @@ class CreateProductsPage extends StatefulWidget {
 }
 
 class _CreateProductsPageState extends State<CreateProductsPage> {
-  String _data;
-  String _dec;
-  double _price;
+  //String _data;String _dec;double _price;
+  final Map<String, dynamic> _formdata = {
+    'title': null,
+    'dec': null,
+    'price': null,
+    'image': 'images/tic.jpg',
+  };
   final _formkey = GlobalKey<FormState>();
 
   @override
@@ -20,7 +24,11 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     final dv = MediaQuery.of(context).size.width;
     final devicesize = dv > 500.0 ? 400.0 : dv * 0.95;
     final dvpadding = dv - devicesize;
-    return Container(
+    return GestureDetector(
+        onTap: (){
+          FocusScope.of(context).autofocus(FocusNode());
+        },
+        child: Container(
         padding: EdgeInsets.symmetric(horizontal: dvpadding / 2),
         child: Form(
             key: _formkey,
@@ -38,7 +46,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
                 )
                 //Text(data),
               ],
-            )));
+            ))));
   }
 
   Widget _buildtitle() {
@@ -51,9 +59,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       decoration: InputDecoration(labelText: "Product name"),
       //onChanged: (String value) {setState(() {_data = value;});},
       onSaved: (String value) {
-        setState(() {
-          _data = value;
-        });
+          _formdata['title'] = value;
       },
     );
   }
@@ -69,9 +75,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       maxLines: 4,
       //  onChanged: (String value) {setState(() {_dec = value;});},
       onSaved: (String value) {
-        setState(() {
-          _dec = value;
-        });
+          _formdata['dec'] = value;
       },
     );
   }
@@ -88,9 +92,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       },
       // onChanged: (String value) {setState(() {_price = double.parse(value);});}
       onSaved: (String value) {
-        setState(() {
-          _price = double.parse(value);
-        });
+          _formdata['price'] = double.parse(value);
       },
     );
   }
@@ -98,13 +100,13 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   void _onclick() {
     _formkey.currentState.validate();
     _formkey.currentState.save();
-    final Map<String, dynamic> producuts = {
-      'title': _data,
-      'dec': _dec,
-      'price': _price,
-      'image': 'images/tic.jpg',
-    };
-    widget.addproduct(producuts);
+//    final Map<String, dynamic> producuts = {
+//      'title': _data,
+//      'dec': _dec,
+//      'price': _price,
+//      'image': 'images/tic.jpg',
+//    };
+    widget.addproduct(_formdata);
     print("workng");
     Navigator.pushReplacementNamed(context, 'second');
   }
