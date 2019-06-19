@@ -43,7 +43,11 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 
   Widget _buildtitle() {
     return TextFormField(
-      autofocus: true,
+      validator: (String value){
+        if(value.isEmpty){
+          return "titiel is required";
+        }
+      },
       decoration: InputDecoration(labelText: "Product name"),
       //onChanged: (String value) {setState(() {_data = value;});},
       onSaved: (String value) {
@@ -56,7 +60,11 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 
   Widget _bilddec() {
     return TextFormField(
-      autofocus: true,
+      validator: (String value){
+        if(value.isEmpty){
+          return "dec is required";
+        }
+      },
       decoration: InputDecoration(labelText: "Product dec"),
       maxLines: 4,
       //  onChanged: (String value) {setState(() {_dec = value;});},
@@ -73,6 +81,11 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: "Product price"),
       autofocus: true,
+      validator: (String value){
+        if(value.isEmpty){
+          return "price is required";
+        }
+      },
       // onChanged: (String value) {setState(() {_price = double.parse(value);});}
       onSaved: (String value) {
         setState(() {
@@ -83,6 +96,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   }
 
   void _onclick() {
+    _formkey.currentState.validate();
     _formkey.currentState.save();
     final Map<String, dynamic> producuts = {
       'title': _data,
