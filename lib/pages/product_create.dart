@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CreateProductsPage extends StatefulWidget {
   final Function addproduct;
+
   CreateProductsPage(this.addproduct);
 
   @override
@@ -13,7 +14,32 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   String _dec;
   double _price;
 
-  Widget _buildtitle(){
+  @override
+  Widget build(BuildContext context) {
+    final dv = MediaQuery.of(context).size.width;
+    final devicesize = dv > 500.0 ? 400.0 : dv * 0.95;
+    final dvpadding = dv - devicesize;
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: dvpadding / 2),
+        child: Form(
+            child: ListView(
+          children: <Widget>[
+            _buildtitle(),
+            _bilddec(),
+            _bildprice(),
+
+            RaisedButton(
+              onPressed: () {
+                _onclick();
+              },
+              child: Text("save"),
+            )
+            //Text(data),
+          ],
+        )));
+  }
+
+  Widget _buildtitle() {
     return TextField(
       autofocus: true,
       decoration: InputDecoration(labelText: "Product name"),
@@ -24,7 +50,8 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       },
     );
   }
-  Widget _bilddec(){
+
+  Widget _bilddec() {
     return TextField(
       autofocus: true,
       decoration: InputDecoration(labelText: "Product dec"),
@@ -36,8 +63,9 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       },
     );
   }
-  Widget _bildprice(){
-    return  TextField(
+
+  Widget _bildprice() {
+    return TextField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: "Product price"),
       autofocus: true,
@@ -49,8 +77,8 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     );
   }
 
-  void _onclick(){
-    final Map<String,dynamic> producuts ={
+  void _onclick() {
+    final Map<String, dynamic> producuts = {
       'title': _data,
       'dec': _dec,
       'price': _price,
@@ -59,28 +87,5 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     widget.addproduct(producuts);
     print("workng");
     Navigator.pushReplacementNamed(context, 'second');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final dv=MediaQuery.of(context).size.width;
-    final devicesize=  dv>500.0 ? 400.0: dv*0.95 ;
-    final dvpadding=dv-devicesize;
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: dvpadding/2),
-        child: ListView(
-      children: <Widget>[
-        _buildtitle(),
-        _bilddec(),
-        _bildprice(),
-
-
-        RaisedButton(onPressed: (){
-          _onclick();
-
-        },child: Text("save"),)
-        //Text(data),
-      ],
-    ));
   }
 }
