@@ -8,8 +8,9 @@ import '../widgets/ui_elements/title_default.dart';
 class MangageProducts extends StatelessWidget {
   final Function addproduct;
   final Function deleteproduct;
+  List<Map<String, dynamic>> _products = [];
 
-  MangageProducts(this.addproduct,this.deleteproduct);
+  MangageProducts(this.addproduct,this.deleteproduct,this._products);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class MangageProducts extends StatelessWidget {
             body: TabBarView(
               children: <Widget>[
                 CreateProductsPage(addproduct),
-                ListProductsPage(),
+                ListProductsPage(_products),
               ],
             )));
   }

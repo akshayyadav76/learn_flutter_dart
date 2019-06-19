@@ -44,7 +44,7 @@ class _MyappState extends State<Myapp> {
         routes: {
           'second': (BuildContext context) =>
               HomePage(_products),
-          "admin": (BuildContext context) => MangageProducts(_addproduct, _deleteprodcut)
+          "admin": (BuildContext context) => MangageProducts(_addproduct, _deleteprodcut,_products)
         },
 
         onGenerateRoute: (RouteSettings setting) {
