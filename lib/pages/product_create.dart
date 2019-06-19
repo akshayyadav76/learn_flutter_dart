@@ -13,6 +13,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   String _data;
   String _dec;
   double _price;
+  final _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,21 +23,22 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: dvpadding / 2),
         child: Form(
+            key: _formkey,
             child: ListView(
-          children: <Widget>[
-            _buildtitle(),
-            _bilddec(),
-            _bildprice(),
+              children: <Widget>[
+                _buildtitle(),
+                _bilddec(),
+                _bildprice(),
 
-            RaisedButton(
-              onPressed: () {
-                _onclick();
-              },
-              child: Text("save"),
-            )
-            //Text(data),
-          ],
-        )));
+                RaisedButton(
+                  onPressed: () {
+                    _onclick();
+                  },
+                  child: Text("save"),
+                )
+                //Text(data),
+              ],
+            )));
   }
 
   Widget _buildtitle() {
@@ -44,7 +46,11 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       autofocus: true,
       decoration: InputDecoration(labelText: "Product name"),
       //onChanged: (String value) {setState(() {_data = value;});},
-
+      onSaved: (String value) {
+        setState(() {
+          _data = value;
+        });
+      },
     );
   }
 
@@ -53,7 +59,12 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       autofocus: true,
       decoration: InputDecoration(labelText: "Product dec"),
       maxLines: 4,
-    //  onChanged: (String value) {setState(() {_dec = value;});},
+      //  onChanged: (String value) {setState(() {_dec = value;});},
+      onSaved: (String value) {
+        setState(() {
+          _dec = value;
+        });
+      },
     );
   }
 
@@ -62,11 +73,17 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: "Product price"),
       autofocus: true,
-     // onChanged: (String value) {setState(() {_price = double.parse(value);});},
+      // onChanged: (String value) {setState(() {_price = double.parse(value);});}
+      onSaved: (String value) {
+        setState(() {
+          _price = double.parse(value);
+        });
+      },
     );
   }
 
   void _onclick() {
+    _formkey.currentState.save();
     final Map<String, dynamic> producuts = {
       'title': _data,
       'dec': _dec,
