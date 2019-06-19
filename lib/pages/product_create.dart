@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class CreateProductsPage extends StatefulWidget {
   final Function addproduct;
+  final Function update;
+  Map<String, dynamic> products;
 
-  CreateProductsPage(this.addproduct);
+  CreateProductsPage({this.addproduct, this.products, this.update});
 
   @override
   _CreateProductsPageState createState() => _CreateProductsPageState();
@@ -24,50 +26,65 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     final dv = MediaQuery.of(context).size.width;
     final devicesize = dv > 500.0 ? 400.0 : dv * 0.95;
     final dvpadding = dv - devicesize;
-    return GestureDetector(
-        onTap: (){
+    final Widget page = GestureDetector(
+        onTap: () {
           FocusScope.of(context).autofocus(FocusNode());
         },
         child: Container(
-        padding: EdgeInsets.symmetric(horizontal: dvpadding / 2),
-        child: Form(
-            key: _formkey,
-            child: ListView(
-              children: <Widget>[
-                _buildtitle(),
-                _bilddec(),
-                _bildprice(),
+            padding: EdgeInsets.symmetric(horizontal: dvpadding / 2),
+            child: Form(
+                key: _formkey,
+                child: ListView(
+                  children: <Widget>[
+                    _buildtitle(),
+                    _bilddec(),
+                    _bildprice(),
 
-                RaisedButton(
-                  onPressed: () {
-                    _onclick();
-                  },
-                  child: Text("save"),
-                )
-                //Text(data),
-              ],
-            ))));
+                    RaisedButton(
+                      onPressed: () {
+                        _onclick();
+                      },
+                      child: Text("save"),
+                    )
+                    //Text(data),
+                  ],
+                ))));
+    return widget.products == null
+        ? page
+        : Scaffold(
+            appBar: AppBar(
+              title: Text("edit product"),
+            ),
+            body: Column(
+              children: <Widget>[_buildtitle(), _bilddec(), _bildprice()],
+            ),
+          );
   }
+
+
 
   Widget _buildtitle() {
     return TextFormField(
-      validator: (String value){
-        if(value.isEmpty){
+      initialValue: widget.products==null?"":widget.products["title"],
+      //initialValue: widget.products['title'],
+      validator: (String value) {
+        if (value.isEmpty) {
           return "titiel is required";
         }
       },
       decoration: InputDecoration(labelText: "Product name"),
       //onChanged: (String value) {setState(() {_data = value;});},
       onSaved: (String value) {
-          _formdata['title'] = value;
+        _formdata['title'] = value;
       },
     );
   }
 
   Widget _bilddec() {
     return TextFormField(
-      validator: (String value){
-        if(value.isEmpty){
+      initialValue: widget.products==null?"":widget.products["dec"],
+      validator: (String value) {
+        if (value.isEmpty) {
           return "dec is required";
         }
       },
@@ -75,24 +92,26 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       maxLines: 4,
       //  onChanged: (String value) {setState(() {_dec = value;});},
       onSaved: (String value) {
-          _formdata['dec'] = value;
+        _formdata['dec'] = value;
       },
     );
   }
 
   Widget _bildprice() {
     return TextFormField(
+      initialValue:
+          widget.products == null ? "" : widget.products["price"].toString(),
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: "Product price"),
       autofocus: true,
-      validator: (String value){
-        if(value.isEmpty){
+      validator: (String value) {
+        if (value.isEmpty) {
           return "price is required";
         }
       },
       // onChanged: (String value) {setState(() {_price = double.parse(value);});}
       onSaved: (String value) {
-          _formdata['price'] = double.parse(value);
+        _formdata['price'] = double.parse(value);
       },
     );
   }
