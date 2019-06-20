@@ -65,7 +65,7 @@ class MangageProducts extends StatelessWidget {
             body: TabBarView(
               children: <Widget>[
                 CreateProductsPage(addproduct:addproduct),
-                ListProductsPage(_products,update),
+                ListProductsPage(_products,update,deleteproduct),
               ],
             )));
   }
