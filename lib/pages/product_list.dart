@@ -13,8 +13,8 @@ class ListProductsPage extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
         return Dismissible(
-            onDismissed: (DismissDirection dircttion){
-              if(dircttion == DismissDirection.endToStart){
+            onDismissed: (DismissDirection dircttion) {
+              if (dircttion == DismissDirection.endToStart) {
                 delete(index);
               }
             },
@@ -28,18 +28,7 @@ class ListProductsPage extends StatelessWidget {
                   leading: Image.asset(_products[index]['image']),
                   title: Text(_products[index]['title']),
                   subtitle: Text('\$${_products[index]['price']}'),
-                  trailing: IconButton(
-                      icon: Icon(Icons.create),
-                      onPressed: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return CreateProductsPage(
-                            products: _products[index],
-                            update: _update,
-                            index: index,
-                          );
-                        }));
-                      }),
+                  trailing: _buildEditbutton(context, index),
                 ),
                 Divider(),
               ],
@@ -47,5 +36,21 @@ class ListProductsPage extends StatelessWidget {
       },
       itemCount: _products.length,
     );
+  }
+
+
+  Widget _buildEditbutton(BuildContext context, int index) {
+    return IconButton(
+        icon: Icon(Icons.create),
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) {
+            return CreateProductsPage(
+              products: _products[index],
+              update: _update,
+              index: index,
+            );
+          }));
+        });
   }
 }
