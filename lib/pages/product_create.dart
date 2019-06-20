@@ -56,10 +56,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
             appBar: AppBar(
               title: Text("edit product"),
             ),
-            body: Column(
-              children: <Widget>[_buildtitle(), _bilddec(), _bildprice(),
-              RaisedButton(child: Text("save"),onPressed: _onclick,)],
-            ),
+            body: page,
           );
   }
 
@@ -119,11 +116,14 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   }
 
   void _onclick() {
-    _formkey.currentState.validate();
+    if(!_formkey.currentState.validate()){
+      return;
+    }
+    _formkey.currentState.save();
     if(widget.products ==null){
-      _formkey.currentState.save();
+      widget.addproduct(_formdata);
     }else{widget.update(widget.index,_formdata);
-
+         widget.update(widget.index,_formdata);
     }
 
 //    final Map<String, dynamic> producuts = {
@@ -132,7 +132,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 //      'price': _price,
 //      'image': 'images/tic.jpg',
 //    };
-    widget.addproduct(_formdata);
+
     print("workng");
     Navigator.pushReplacementNamed(context, 'second');
   }
