@@ -4,12 +4,13 @@ import './home_page.dart';
 import './product_create.dart';
 import './product_list.dart';
 import '../widgets/ui_elements/title_default.dart';
+import '../module/products_map.dart';
 
 class MangageProducts extends StatelessWidget {
   final Function addproduct;
   final Function deleteproduct;
   final Function update;
-  List<Map<String, dynamic>> _products = [];
+  List<ProductsMap> _products = [];
 
   MangageProducts(this.addproduct,this.deleteproduct,this._products,this.update);
 

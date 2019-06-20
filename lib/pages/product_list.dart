@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import './product_create.dart';
+import '../module/products_map.dart';
 
 class ListProductsPage extends StatelessWidget {
-  List<Map<String, dynamic>> _products = [];
+  List<ProductsMap> _products = [];
   final Function _update;
   final Function delete;
 
@@ -21,13 +22,13 @@ class ListProductsPage extends StatelessWidget {
             background: Container(
               color: Colors.red,
             ),
-            key: Key(_products[index]["title"]),
+            key: Key(_products[index].title),
             child: Column(
               children: <Widget>[
                 ListTile(
-                  leading: Image.asset(_products[index]['image']),
-                  title: Text(_products[index]['title']),
-                  subtitle: Text('\$${_products[index]['price']}'),
+                  leading: Image.asset(_products[index].image),
+                  title: Text(_products[index].title),
+                  subtitle: Text('\$${_products[index].price}'),
                   trailing: _buildEditbutton(context, index),
                 ),
                 Divider(),

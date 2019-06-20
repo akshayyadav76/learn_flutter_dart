@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter_dart/products_manger.dart';
 import './manage_products.dart';
+import '../module/products_map.dart';
 
 class HomePage extends StatelessWidget {
 
-  final List<Map<String,dynamic>> products;
+  final List<ProductsMap> products;
 
   HomePage(this.products,);
   @override

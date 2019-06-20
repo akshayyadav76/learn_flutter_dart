@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'price_tag.dart';
 import './ui_elements/title_default.dart';
+import '../module/products_map.dart';
 
 class ProductsCard extends StatelessWidget {
-  final Map<String ,dynamic>product;
+  final ProductsMap product;
   final int productindex;
 
   ProductsCard(this.product, this.productindex);
@@ -14,19 +15,19 @@ class ProductsCard extends StatelessWidget {
     return Card(
       child: Column(
         children: <Widget>[
-          Image.asset(product['image']),
+          Image.asset(product.image),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: <Widget>[
             // SizedBox(width: 80,),
-          TitleDefulat(product["title"]),
+          TitleDefulat(product.title),
             //SizedBox(width: 40,),
 
-            Price_tag(product['price'].toString()),
+            Price_tag(product.price.toString()),
 
           ],),
           SizedBox(height: 10,),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.deepPurple)),
-            child: Text(product['dec'],
+            child: Text(product.dec,
               style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
           ),
 

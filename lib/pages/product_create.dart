@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import '../module/products_map.dart';
 
 class CreateProductsPage extends StatefulWidget {
   final Function addproduct;
   final Function update;
-  Map<String, dynamic> products;
+  ProductsMap products;
   final int index;
 
-  CreateProductsPage({this.addproduct, this.products, this.update,this.index});
+  CreateProductsPage({this.addproduct, this.products, this.update, this.index});
 
   @override
   _CreateProductsPageState createState() => _CreateProductsPageState();
@@ -60,11 +61,9 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
           );
   }
 
-
-
   Widget _buildtitle() {
     return TextFormField(
-      initialValue: widget.products==null?"":widget.products["title"],
+      initialValue: widget.products == null ? "" : widget.products.title,
       //initialValue: widget.products['title'],
       validator: (String value) {
         if (value.isEmpty) {
@@ -81,7 +80,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 
   Widget _bilddec() {
     return TextFormField(
-      initialValue: widget.products==null?"":widget.products["dec"],
+      initialValue: widget.products == null ? "" : widget.products.dec,
       validator: (String value) {
         if (value.isEmpty) {
           return "dec is required";
@@ -99,7 +98,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   Widget _bildprice() {
     return TextFormField(
       initialValue:
-          widget.products == null ? "" : widget.products["price"].toString(),
+          widget.products == null ? "" : widget.products.price.toString(),
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: "Product price"),
       autofocus: true,
@@ -116,14 +115,27 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
   }
 
   void _onclick() {
-    if(!_formkey.currentState.validate()){
+    if (!_formkey.currentState.validate()) {
       return;
     }
     _formkey.currentState.save();
-    if(widget.products ==null){
-      widget.addproduct(_formdata);
-    }else{widget.update(widget.index,_formdata);
-         widget.update(widget.index,_formdata);
+    if (widget.products == null) {
+      widget.addproduct(
+          ProductsMap(
+              title: _formdata["title"],
+              dec: _formdata["dec"],
+            image: _formdata["image"],
+            price: _formdata['price']
+          )
+      );
+    } else {
+      widget.update(widget.index, ProductsMap(
+          title: _formdata["title"],
+          dec: _formdata["dec"],
+          image: _formdata["image"],
+          price: _formdata['price']
+      ));
+
     }
 
 //    final Map<String, dynamic> producuts = {
