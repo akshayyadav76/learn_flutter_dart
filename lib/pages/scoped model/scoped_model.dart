@@ -2,7 +2,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:learn_flutter_dart/module/products_map.dart';
 
 
-class ScopedModel extends Model{
+class ProductModel extends Model{
 
   List<ProductsMap> _products = [];
   List<ProductsMap> get products{

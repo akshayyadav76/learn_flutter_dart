@@ -7,12 +7,12 @@ import '../widgets/ui_elements/title_default.dart';
 import '../module/products_map.dart';
 
 class MangageProducts extends StatelessWidget {
-  final Function addproduct;
-  final Function deleteproduct;
-  final Function update;
-  List<ProductsMap> _products = [];
 
-  MangageProducts(this.addproduct,this.deleteproduct,this._products,this.update);
+//  final Function addproduct;
+//  final Function deleteproduct;
+//  final Function update;
+//  List<ProductsMap> _products = [];
+//  MangageProducts(this.addproduct,this.deleteproduct,this._products,this.update);
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +65,8 @@ class MangageProducts extends StatelessWidget {
             ),
             body: TabBarView(
               children: <Widget>[
-                CreateProductsPage(addproduct:addproduct),
-                ListProductsPage(_products,update,deleteproduct),
+                CreateProductsPage(),
+                ListProductsPage(null,null,null),
               ],
             )));
   }

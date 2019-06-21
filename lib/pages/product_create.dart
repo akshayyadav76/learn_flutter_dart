@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import '../module/products_map.dart';
 
+import 'package:scoped_model/scoped_model.dart';
+import '../module/products_map.dart';
+import 'scoped model/scoped_model.dart';
+
 class CreateProductsPage extends StatefulWidget {
   final Function addproduct;
   final Function update;
@@ -41,13 +45,9 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
                     _buildtitle(),
                     _bilddec(),
                     _bildprice(),
+                    _submitFromButton(),
 
-                    RaisedButton(
-                      onPressed: () {
-                        _onclick();
-                      },
-                      child: Text("save"),
-                    )
+
                     //Text(data),
                   ],
                 ))));
@@ -147,5 +147,16 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 
     print("workng");
     Navigator.pushReplacementNamed(context, 'second');
+  }
+
+  Widget _submitFromButton(){
+    return ScopedModelDescendant<ProductModel>(builder: (BuildContext context,Widget child,ProductModel model){
+      return RaisedButton(
+        onPressed: () {
+          _onclick();
+        },
+        child: Text("save"),
+      );
+    }) ;
   }
 }

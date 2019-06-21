@@ -5,9 +5,10 @@ import '../module/products_map.dart';
 
 class HomePage extends StatelessWidget {
 
-  final List<ProductsMap> products;
+//  final List<ProductsMap> products;
+//  HomePage(this.products,);
 
-  HomePage(this.products,);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +44,6 @@ class HomePage extends StatelessWidget {
           iconTheme: IconThemeData(color: Colors.white),
         ),
 
-        body: ProductsManger(products));
+        body: ProductsManger());
   }
 }

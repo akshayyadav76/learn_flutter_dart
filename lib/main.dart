@@ -17,23 +17,7 @@ class Myapp extends StatefulWidget {
 }
 
 class _MyappState extends State<Myapp> {
-  List<ProductsMap> _products = [];
 
-  void _addproduct(ProductsMap productsdata) {
-    setState(() {
-      _products.add(productsdata);
-    });
-  }
-
-  void _deleteprodcut(int index) {
-    _products.removeAt(index);
-  }
-
-  void _update(int index, ProductsMap product) {
-    setState(() {
-      _products[index] = product;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +31,9 @@ class _MyappState extends State<Myapp> {
         ),
         home: Login(),
         routes: {
-          'second': (BuildContext context) => HomePage(_products),
+          'second': (BuildContext context) => HomePage(),
           "admin": (BuildContext context) =>
-              MangageProducts(_addproduct, _deleteprodcut, _products, _update)
+              MangageProducts()
         },
         onGenerateRoute: (RouteSettings setting) {
           final List<String> pathnames = setting.name.split("/");
@@ -59,18 +43,14 @@ class _MyappState extends State<Myapp> {
           if (pathnames[1] == "products") {
             final int index = int.parse(pathnames[2]);
             return MaterialPageRoute<bool>(builder: (context) {
-              return Deatils(
-                  _products[index].title,
-                  _products[index].image,
-                  _products[index].dec,
-                  _products[index].price);
+              return Deatils(null,null,null,null);
             });
           }
           return null;
         },
         onUnknownRoute: (RouteSettings setting) {
           return MaterialPageRoute(
-              builder: (BuildContext context) => HomePage(_products));
+              builder: (BuildContext context) => HomePage());
         });
   }
 }
