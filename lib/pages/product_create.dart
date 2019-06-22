@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import '../module/products_map.dart';
-
+import 'package:learn_flutter_dart/module/products_map.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../module/products_map.dart';
-import 'scoped model/scoped_model.dart';
+
+import "../pages/scoped model/scoped_model.dart";
+
+
+
+
+
+
 
 class CreateProductsPage extends StatefulWidget {
   final Function addproduct;
@@ -114,13 +119,13 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     );
   }
 
-  void _onclick() {
+  void _onclick(Function addproduct,Function update) {
     if (!_formkey.currentState.validate()) {
       return;
     }
     _formkey.currentState.save();
     if (widget.products == null) {
-      widget.addproduct(
+      addproduct(
           ProductsMap(
               title: _formdata["title"],
               dec: _formdata["dec"],
@@ -129,7 +134,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
           )
       );
     } else {
-      widget.update(widget.index, ProductsMap(
+      update(widget.index, ProductsMap(
           title: _formdata["title"],
           dec: _formdata["dec"],
           image: _formdata["image"],
@@ -137,7 +142,6 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
       ));
 
     }
-
 //    final Map<String, dynamic> producuts = {
 //      'title': _data,
 //      'dec': _dec,
@@ -153,7 +157,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     return ScopedModelDescendant<ProductModel>(builder: (BuildContext context,Widget child,ProductModel model){
       return RaisedButton(
         onPressed: () {
-          _onclick();
+          _onclick(model.addproduct,model.update);
         },
         child: Text("save"),
       );

@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import './pages/login.dart';
 
 import "./pages/home_page.dart";
 import './pages/manage_products.dart';
-import 'package:learn_flutter_dart/widgets/products.dart';
 import './pages/deatils.dart';
-import './module/products_map.dart';
+import 'module/products_map.dart';
+import "./pages/scoped model/scoped_model.dart";
+
+
+
+
+
+
+
 
 main() {
   runApp(Myapp());
@@ -21,7 +29,9 @@ class _MyappState extends State<Myapp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ScopedModel<ProductModel>(
+        model: ProductModel(),
+        child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.light,
@@ -51,6 +61,6 @@ class _MyappState extends State<Myapp> {
         onUnknownRoute: (RouteSettings setting) {
           return MaterialPageRoute(
               builder: (BuildContext context) => HomePage());
-        });
+        }));
   }
 }
