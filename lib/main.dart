@@ -53,7 +53,7 @@ class _MyappState extends State<Myapp> {
           if (pathnames[1] == "products") {
             final int index = int.parse(pathnames[2]);
             return MaterialPageRoute<bool>(builder: (context) {
-              return Deatils(null,null,null,null);
+              return Deatils(index);
             });
           }
           return null;
