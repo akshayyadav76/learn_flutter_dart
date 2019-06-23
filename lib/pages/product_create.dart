@@ -11,12 +11,12 @@ import "../pages/scoped model/scoped_model.dart";
 
 
 class CreateProductsPage extends StatefulWidget {
-  final Function addproduct;
-  final Function update;
-  ProductsMap products;
-  final int index;
 
-  CreateProductsPage({this.addproduct, this.products, this.update, this.index});
+//  final Function addproduct;
+//  final Function update;
+//  ProductsMap products;
+//  final int index;
+//  CreateProductsPage({this.addproduct, this.products, this.update, this.index});
 
   @override
   _CreateProductsPageState createState() => _CreateProductsPageState();
@@ -34,10 +34,27 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    return ScopedModelDescendant<ProductModel>(builder: (BuildContext context,Widget child,ProductModel model){
+      final Widget page = _buildPageContent(context,model.selectedProduct);
+      return model.selectedProductReturn == null
+          ? page
+          : Scaffold(
+        appBar: AppBar(
+          title: Text("edit product"),
+        ),
+        body: page,
+      );
+    });
+
+  }
+
+
+  Widget _buildPageContent(BuildContext context ,ProductsMap products){
     final dv = MediaQuery.of(context).size.width;
     final devicesize = dv > 500.0 ? 400.0 : dv * 0.95;
     final dvpadding = dv - devicesize;
-    final Widget page = GestureDetector(
+    return GestureDetector(
         onTap: () {
           FocusScope.of(context).autofocus(FocusNode());
         },
@@ -47,28 +64,20 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
                 key: _formkey,
                 child: ListView(
                   children: <Widget>[
-                    _buildtitle(),
-                    _bilddec(),
-                    _bildprice(),
-                    _submitFromButton(),
+                    _buildtitle(products),
+                    _bilddec(products),
+                    _bildprice(products),
+                    _submitFromButton(products),
 
 
                     //Text(data),
                   ],
                 ))));
-    return widget.products == null
-        ? page
-        : Scaffold(
-            appBar: AppBar(
-              title: Text("edit product"),
-            ),
-            body: page,
-          );
   }
 
-  Widget _buildtitle() {
+  Widget _buildtitle(ProductsMap products) {
     return TextFormField(
-      initialValue: widget.products == null ? "" : widget.products.title,
+      initialValue: products == null ? "" : products.title,
       //initialValue: widget.products['title'],
       validator: (String value) {
         if (value.isEmpty) {
@@ -83,9 +92,9 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     );
   }
 
-  Widget _bilddec() {
+  Widget _bilddec(ProductsMap products) {
     return TextFormField(
-      initialValue: widget.products == null ? "" : widget.products.dec,
+      initialValue: products == null ? "" : products.dec,
       validator: (String value) {
         if (value.isEmpty) {
           return "dec is required";
@@ -100,10 +109,10 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     );
   }
 
-  Widget _bildprice() {
+  Widget _bildprice(ProductsMap products) {
     return TextFormField(
       initialValue:
-          widget.products == null ? "" : widget.products.price.toString(),
+         products == null ? "" : products.price.toString(),
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: "Product price"),
       autofocus: true,
@@ -119,12 +128,12 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     );
   }
 
-  void _onclick(Function addproduct,Function update) {
+  void _onclick(Function addproduct,Function update,[int selectedProductIndex]) {
     if (!_formkey.currentState.validate()) {
       return;
     }
     _formkey.currentState.save();
-    if (widget.products == null) {
+    if (selectedProductIndex == null) {
       addproduct(
           ProductsMap(
               title: _formdata["title"],
@@ -134,7 +143,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
           )
       );
     } else {
-      update(widget.index, ProductsMap(
+      update(selectedProductIndex, ProductsMap(
           title: _formdata["title"],
           dec: _formdata["dec"],
           image: _formdata["image"],
@@ -153,14 +162,16 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
     Navigator.pushReplacementNamed(context, 'second');
   }
 
-  Widget _submitFromButton(){
+  Widget _submitFromButton(ProductsMap products){
     return ScopedModelDescendant<ProductModel>(builder: (BuildContext context,Widget child,ProductModel model){
       return RaisedButton(
         onPressed: () {
-          _onclick(model.addproduct,model.update);
+          _onclick(model.addproduct,model.update,model.selectedProductReturn);
         },
         child: Text("save"),
       );
-    }) ;
+    });
   }
+
+
 }

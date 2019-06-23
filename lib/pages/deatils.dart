@@ -42,6 +42,7 @@ class Deatils extends StatelessWidget {
     }, child: ScopedModelDescendant<ProductModel>(
         builder: (BuildContext context, Widget child, ProductModel model) {
           final ProductsMap product=model.products[index];
+          final double price2=product.price;
       return Scaffold(
           appBar: AppBar(title: Text(product.title)),
           body: Center(
@@ -59,7 +60,7 @@ class Deatils extends StatelessWidget {
                   // SizedBox(width: 80,),
                   Text(product.title),
                   //SizedBox(width: 40,),
-                  Text(product.price.toString())
+                  Text("\$"+price2.toString())
                 ],
               ),
               Text(product.dec),

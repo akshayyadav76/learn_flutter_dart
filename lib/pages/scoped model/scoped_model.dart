@@ -8,20 +8,38 @@ class ProductModel extends Model{
   List<ProductsMap> get products{
     return List.from(_products);
   }
+  int _selectedProductIndex;
 
   void addproduct(ProductsMap productsdata) {
 
       _products.add(productsdata);
+      _selectedProductIndex = null;
 
   }
 
-  void deleteprodcut(int index) {
-    _products.removeAt(index);
+  void deleteprodcut() {
+    _products.removeAt(_selectedProductIndex);
+    _selectedProductIndex = null;
   }
 
-  void update(int index, ProductsMap product) {
+  int get selectedProductReturn{
+   return _selectedProductIndex;
+  }
 
-      _products[index] = product;
+  ProductsMap get selectedProduct{
+    if(_selectedProductIndex == null){
+      return null;
+    }
+    return _products[_selectedProductIndex];
+  }
 
+  void update( ProductsMap product) {
+
+      _products[_selectedProductIndex] = product;
+      _selectedProductIndex = null;
+
+  }
+  void selectedIndex(int index){
+    _selectedProductIndex = index;
   }
 }
