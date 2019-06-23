@@ -143,7 +143,7 @@ class _CreateProductsPageState extends State<CreateProductsPage> {
           )
       );
     } else {
-      update(selectedProductIndex, ProductsMap(
+      update( ProductsMap(
           title: _formdata["title"],
           dec: _formdata["dec"],
           image: _formdata["image"],
