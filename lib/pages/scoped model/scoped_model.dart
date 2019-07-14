@@ -3,13 +3,30 @@ import 'package:learn_flutter_dart/module/products_map.dart';
 
 class ProductModel extends Model {
   List<ProductsMap> _products = [];
+  bool _showFavorite = false;
 
   List<ProductsMap> get products {
     return List.from(_products);
   }
 
-  int _selectedProductIndex;
+  List<ProductsMap>get dispalyedproduct{
+    if(_showFavorite){
+    return _products.where((ProductsMap product){product.isFavorite;}).toList();
+    }
+    return List.from(_products);
+  }
 
+  void showDisply(){
+    _showFavorite = !_showFavorite;
+    notifyListeners();
+  }
+
+  bool get onlyFavorites{
+    return _showFavorite;
+  }
+
+
+  int _selectedProductIndex;
   void addproduct(ProductsMap productsdata) {
     _products.add(productsdata);
     _selectedProductIndex = null;
@@ -59,4 +76,5 @@ class ProductModel extends Model {
     selectedProductReturn ==null;
 
   }
+
 }
